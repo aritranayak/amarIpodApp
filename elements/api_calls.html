@@ -1,0 +1,65 @@
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/vaadin-grid/vaadin-grid.html">
+<link rel="import" href="../bower_components/vaadin-core-elements/vaadin-core-elements.html">
+
+<dom-module id="aws-api-gateway-call">
+
+	<template>
+		<iron-ajax
+		    auto
+		    url="{{url}}"
+		    handle-as="json"
+		    last-response="{{handleResponse}}">
+		 </iron-ajax>
+		 
+ 		<vaadin-grid items="{{handleResponse}}" selection-mode="multi">
+	        <table>
+	          <colgroup>
+	              <col name="fileName">
+			      <col name="titleName">
+			      <col name="artist">
+			      <col name="albumName">
+			      <col name="action">
+	          </colgroup>
+	          <thead>
+			    <tr>
+			      <th>MP3 File Name</th>
+			      <th>Title Name</th>
+			      <th>Artist Name</th>
+			      <th>Album Name</th>
+			      <th>Action</th>
+			    </tr>
+			    </thead>
+	        </table>
+	      </vaadin-grid>
+		 
+	</template>
+	
+	<script>
+	    Polymer({
+		      is: "aws-api-gateway-call",
+		      
+		      properties : {
+		    	  hostname:{
+		    		  value: 'test',
+		    		  notify: true
+		    	  },
+		    	  stage:{
+		    		  value: 'test',
+		    		  notify: true
+		    	  },
+		    	  method:{
+		    		  value: 'test',
+		    		  notify: true
+		    	  },
+		    	  url:{
+		    		  computed: 'computeUrl(hostname, stage, method)'
+		    	  }
+		      },		      
+		      computeUrl: function(hostname, stage, method){
+		    	  return [hostname, stage, method].join('/')
+		      }
+		    });
+	  	</script>
+
+</dom-module>

@@ -1,0 +1,23 @@
+@ipod_default: #555;
+@ipod_font: Verdana;
+@header-height: 15%;
+@content-height: 95%;
+@font-color-white: #FFF;
+@table_background-image: url("../img/bg image.jpeg");
+
+.ipodContentPanel{
+	background-image: @table_background-image;
+    background-color: #cccccc;
+    background-size: 100%;
+    height: @content-height;
+}
+
+.ipodHeaderPanel {
+	background-color: @ipod_default;
+	font-family: @ipod_font;
+	font-size: 80px;
+	height: @header-height;
+	text-align: center;
+  	vertical-align: middle;
+  	color: @font-color-white;
+}
